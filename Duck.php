@@ -94,8 +94,9 @@ class Duck
 
     public function getQingHua ()
     {
-        $url = 'https://api.vvhan.com/api/love?type=json';
-        $qinghua = $this->getUrl($url);
+        $url = 'https://v1.hitokoto.cn/?c=i'; // 指定爱情分类
+        $qinghua = $this->getUrl($url);   // 解析JSON获取情话内容
+        $qinghuaData = json_decode($qinghua, true);
         if(!isset($qinghua['ishan']))
         {
             $qinghua = $this->getUrl('https://api.lovelive.tools/api/SweetNothings');
