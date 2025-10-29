@@ -94,14 +94,14 @@ class Duck
 
     public function getQingHua ()
     {
-        $url = 'https://api.vvhan.com/api/love?type=json';
+        $url = 'https://v1.hitokoto.cn/?c=i';
         $qinghua = $this->getUrl($url);
-        if(!isset($qinghua['ishan']))
+        if(!isset($qinghua['hitokoto']))
         {
             $qinghua = $this->getUrl('https://api.lovelive.tools/api/SweetNothings');
             return $qinghua;
         }
-        return $qinghua['ishan'];
+        return $qinghua['hitokoto'];
     }
 
     /**
