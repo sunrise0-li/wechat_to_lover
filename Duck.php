@@ -94,16 +94,15 @@ class Duck
 
     public function getQingHua ()
     {
-        $url = 'https://v1.hitokoto.cn/?c=i'; // 指定爱情分类
-        $qinghua = $this->getUrl($url);   // 解析JSON获取情话内容
-        $qinghuaData = json_decode($qinghua, true);
-        if (isset($qinghuaData['hitokoto'])) {
-        return $qinghuaData['hitokoto'];
+        $url = 'https://api.vvhan.com/api/love?type=json';
+        $qinghua = $this->getUrl($url);
+        if(!isset($qinghua['ishan']))
+        {
+            $qinghua = $this->getUrl('https://api.lovelive.tools/api/SweetNothings');
+            return $qinghua;
+        }
+        return $qinghua['ishan'];
     }
-    // 备选方案：若解析失败，调用备用API
-    $backupUrl = 'https://api.lovelive.tools/api/SweetNothings';
-    return $this->getUrl($backupUrl);
-}
 
     /**
      * 和风天气
