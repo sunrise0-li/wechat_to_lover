@@ -54,8 +54,7 @@ $weekarray=array("日","一","二","三","四","五","六");
                 'color' => '#40d6bf'
             ],
             'qinghua' => [//情话
-                //'value' => $start->getQingHua(),
-                'value' => getDailyLoveWord(),
+                'value' => $start->getQingHua(),
                 'color' => '#eb5f76'
             ],
             'birthday' => [//生日
@@ -94,21 +93,6 @@ foreach ($start->getUserList()['data']['openid'] as $user)
     $start->sendTemplateMessage(json_encode($data));
 }
 
-// 新增：获取每日情话（调用新API）
-function getDailyLoveWord() {
-    $apiUrl = "https://api.kekc.cn/api/wawr";
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $apiUrl);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    $loveWord = curl_exec($ch);
-    curl_close($ch);
-    if (empty($loveWord)) {
-        $loveWord = "今日情话加载中，请稍后再试～";
-    }
-    return $loveWord;
-}
 
 
 function getConfig($path)
