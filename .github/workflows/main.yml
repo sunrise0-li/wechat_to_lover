@@ -10,10 +10,10 @@ on:
   pull_request:
     branches: [ "master" ]
   schedule:
-    # 周一到周五（1-5）早上6:30（UTC时间转换后）
-    - cron: '30 22 * * 1-5'
-    # 周六（6）和周日（0）早上9:00（UTC时间转换后）
-    - cron: '0 1 * * 0,6'
+    # 每天早上6:30
+    - cron: '30 6 * * *'
+    # 每天晚上9:30
+    - cron: '30 21 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
